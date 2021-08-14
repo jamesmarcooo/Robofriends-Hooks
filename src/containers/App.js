@@ -14,13 +14,20 @@ function App(){
     //     }
     // }
     const [robots, setRobots] = useState([]) //[state, function that changes the state] = useState(initial state)
-    const [searchfield, setSearchfield] = useState()
+    const [searchfield, setSearchfield] = useState('')
 
     // componentDidMount(){
     //     fetch('https://jsonplaceholder.typicode.com/users')
     //         .then(response => response.json())
     //         .then(users => this.setState({robots: users}));
     // }
+    
+    // similar to componentDidMount()
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(users => {setRobots (users)});
+    },[])
 
     const onSearchChange = (event) => {
         // this.setState({ searchfield: event.target.value })
